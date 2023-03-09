@@ -27,6 +27,14 @@ li {
     margin: 0;
 }
 
+.selectTab {
+    color: red;
+}
+
+.unSelectTab {
+    color: black;
+}
+
 .Content {
 
 }

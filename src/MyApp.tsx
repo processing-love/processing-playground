@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import './App.css';
+import './MyApp.css';
 import Project from "./model/response/Project";
 import ProjectType from "./model/response/ProjectType";
 import Code from "./model/response/Code";
 import {App, Button, Navbar, Page} from "konsta/react";
+import CodeEditor from "./components/CodeEditor";
 
 var index = 1
 
@@ -20,14 +21,6 @@ function MyApp() {
         setProject(new Project(project.name, project.type, project.currentIndex, project.codes));
     }
     console.log("peter refresh ui ", project);
-
-    return (
-        <App theme="material">
-            <Page>
-                <Navbar title="my app"></Navbar>
-            </Page>
-        </App>
-    );
     return (
         <div className="App">
             <div className="Header">
@@ -35,16 +28,18 @@ function MyApp() {
                     {
                         project.codes.map((code, index, array) => {
                             console.log('peter item ' + index)
-                            return <li key={index}>{code.name}</li>
+                            return <li key={index}>
+                                <div className={project.currentIndex == index ? "selectTab" : "unSelectTab"}>
+                                    {code.name}
+                                </div>
+                            </li>
                         })
                     }
                 </ul>
                 <button onClick={() => newCode()}>添加</button>
             </div>
             <div className="Content">
-                {
-                    project.codes[project.currentIndex].content
-                }
+                <CodeEditor code={project.codes[project.currentIndex]}/>
             </div>
         </div>
     );

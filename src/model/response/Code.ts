@@ -1,8 +1,8 @@
 class Code {
-    public name: String;
-    public content: String;
+    public name: string;
+    public content: string;
 
-    constructor(name: String, content: String) {
+    constructor(name: string, content: string) {
         this.name = name;
         this.content = content;
     }
